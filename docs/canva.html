@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>🤖 Groq + ElevenLabs Studio</title>
+    <!-- Le fichier style.css gère la mise en page Flexbox à deux colonnes -->
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Chaîne de Contenu IA : Groq (Texte) + ElevenLabs (Voix)</h1>
+        
+        <div class="main-content">
+            
+            <!-- Colonne de Gauche : INPUTS (Aside) -->
+            <aside class="input-panel">
+                <h2>⚙️ 1. Contrôles IA (Input)</h2>
+                
+                <!-- NOUVEAU: Formulaire Groq Three.js pour la génération de formes 3D -->
+                <div class="input-group">
+                    <h3>Génération 3D (Groq Three.js)</h3>
+                    <form id="threeJsForm">
+                        <input type="text" id="threeJsPrompt" name="prompt" placeholder="Ex: Un objet qui tourne vite (Sphere, Box, Cylinder)" required>
+                        <button type="submit" id="generateThreeJsButton">Générer la Forme 3D</button>
+                    </form>
+                    <p id="statusThreeJs"></p>
+                </div>
+                
+                <!-- Formulaire Groq (Génération de Texte) -->
+                <div class="input-group">
+                    <h3>Génération de Texte (Llama 3.1)</h3>
+                    <form id="groqForm">
+                        <input type="text" id="promptInput" name="prompt" placeholder="Sujet du script (Ex: Avantages de l'Agile)" required>
+                        <button type="submit">Générer le Texte</button>
+                    </form>
+                    <p id="statusGroq"></p>
+                </div>
+
+                <!-- Formulaire ElevenLabs (Synthèse Vocale) -->
+                <div class="input-group">
+                    <h3>Synthèse Vocale ElevenLabs</h3>
+                    <form id="ttsForm">
+                        <textarea id="textInput" name="text" placeholder="Le texte généré ou votre propre texte..."></textarea>
+                        <button type="submit" id="generateAudioButton">Synthétiser la Voix</button>
+                    </form>
+                    <p id="statusElevenLabs"></p>
+                </div>
+            </aside>
+
+            <!-- Colonne de Droite : OUTPUTS (Main Content) -->
+            <section class="output-panel">
+                <h2>🎙️ 2. Résultats & Visualisation (Output)</h2>
+                
+                <div class="output-group">
+                    <h3>Visualisation 3D de la Caméra (Three.js)</h3>
+                    <!-- Canvas utilisé directement pour le rendu Three.js -->
+                    <canvas id="threeJsContainer" style="width: 100%; height: 300px; border: 1px solid #ccc; background-color: #000; display: block;"></canvas>
+                </div>
+                
+                <div class="output-group">
+                    <h3>Texte Généré / Saisi</h3>
+                    <textarea id="outputTextInput" readonly placeholder="Le contenu textuel généré par Groq sera affiché ici pour vérification."></textarea>
+                </div>
+
+                <div class="output-group">
+                    <h3>Lecture Audio</h3>
+                    <audio id="audioPlayer" controls></audio>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Import des librairies Three.js et du script local -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script> 
+</body>
+</html>
